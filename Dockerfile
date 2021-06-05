@@ -13,8 +13,7 @@ RUN apk add --update \
     readline-dev \
     zlib-dev \
     linux-headers \
-    imagemagick-dev \    
-    libffi-dev \    
+    imagemagick-dev \
     libffi-dev \
     postgresql-dev \
 && rm -rf /var/cache/apk/*
