@@ -1,22 +1,24 @@
-FROM alpine:3.8
+FROM ubuntu:20.04
 
 ENV PATH /root/.rbenv/shims:/root/.rbenv/bin:$PATH
 
 RUN mkdir -p /app
 WORKDIR /app
 
-RUN apk add --update \
-    bash \
-    git \
+RUN echo "deb http://security.ubuntu.com/ubuntu bionic-security main" >> /etc/apt/sources.list
+
+RUN apt update && apt install -y \
+    aufs-tools \
+    automake \
+    build-essential \
     curl \
-    build-base \
-    readline-dev \
-    zlib-dev \
-    linux-headers \
-    imagemagick-dev \
+    git \
+    libreadline-dev \
+    zlib1g-dev \
     libffi-dev \
-    postgresql-dev \
-&& rm -rf /var/cache/apk/*
+    libpq-dev \
+    libssl1.0-dev \
+&& rm -rf /var/lib/apt/lists/*
 
 RUN curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash
 
