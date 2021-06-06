@@ -2,9 +2,6 @@ FROM ubuntu:20.04
 
 ENV PATH /root/.rbenv/shims:/root/.rbenv/bin:$PATH
 
-RUN mkdir -p /app
-WORKDIR /app
-
 RUN echo "deb http://security.ubuntu.com/ubuntu bionic-security main" >> /etc/apt/sources.list
 
 RUN apt update && apt install -y \
@@ -18,6 +15,7 @@ RUN apt update && apt install -y \
     libffi-dev \
     libpq-dev \
     libssl1.0-dev \
+    nodejs \
 && rm -rf /var/lib/apt/lists/*
 
 RUN curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash
