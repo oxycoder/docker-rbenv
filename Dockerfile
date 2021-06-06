@@ -1,6 +1,7 @@
 FROM ubuntu:20.04
 
 ENV PATH /root/.rbenv/shims:/root/.rbenv/bin:$PATH
+ENV DEBIAN_FRONTEND=noninteractive
 
 RUN echo "deb http://security.ubuntu.com/ubuntu bionic-security main" >> /etc/apt/sources.list
 
