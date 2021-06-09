@@ -45,3 +45,6 @@ RUN rbenv install 3.0.0 \
 && gem install rails \
 && gem install sidekiq \
 && rbenv rehash
+
+# ssh setup
+RUN mkdir -p -m 0600 ~/.ssh  && ln -s /run/secrets/host_ssh_key ~/.ssh/id_rsa
