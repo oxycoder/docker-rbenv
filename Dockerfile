@@ -47,4 +47,6 @@ RUN rbenv install 3.0.0 \
 && rbenv rehash
 
 # ssh setup
-RUN mkdir -p -m 0600 ~/.ssh  && ln -s /run/secrets/host_ssh_key ~/.ssh/id_rsa
+RUN mkdir -p -m 0600 ~/.ssh  && \
+ln -s /run/secrets/host_ssh_key ~/.ssh/id_rsa \
+ln -s /run/secrets/host_known_hosts ~/.ssh/known_hosts
