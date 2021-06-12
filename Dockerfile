@@ -17,6 +17,7 @@ RUN apt update && apt install -y \
     libpq-dev \
     libssl1.0-dev \
     nodejs \
+    shared-mime-info \
 && rm -rf /var/lib/apt/lists/*
 
 RUN curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash
@@ -48,5 +49,4 @@ RUN rbenv install 3.0.0 \
 
 # ssh setup
 RUN mkdir -p -m 0600 ~/.ssh \
-&& ln -s /run/secrets/host_ssh_key ~/.ssh/id_rsa \
-&& ln -s /run/secrets/host_known_hosts ~/.ssh/known_hosts
+&& ln -s /run/secrets/host_ssh_key ~/.ssh/id_rsa
