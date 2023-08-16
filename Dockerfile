@@ -1,13 +1,10 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 ENV PATH /root/.rbenv/shims:/root/.rbenv/bin:$PATH
 ENV DEBIAN_FRONTEND=noninteractive
 ENV GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
 
-RUN echo "deb http://security.ubuntu.com/ubuntu bionic-security main" >> /etc/apt/sources.list
-
 RUN apt update && apt install -y \
-    aufs-tools \
     automake \
     build-essential \
     curl \
@@ -16,7 +13,6 @@ RUN apt update && apt install -y \
     zlib1g-dev \
     libffi-dev \
     libpq-dev \
-    libssl1.0-dev \
     nodejs \
     shared-mime-info \
     imagemagick \
@@ -24,16 +20,9 @@ RUN apt update && apt install -y \
 
 RUN curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash
 
-# setup ruby 2.3.1
-RUN rbenv install 2.3.1 \
-&& rbenv global 2.3.1 \
-&& gem update --system \
-&& gem install bundler:1.17.3 \
-&& rbenv rehash
-
-# setup ruby 2.7.2
-RUN rbenv install 2.7.2 \
-&& rbenv global 2.7.2 \
+# setup ruby 2.7.6
+RUN rbenv install 2.7.6 \
+&& rbenv global 2.7.6 \
 && gem install bundler:1.17.3 \
 && rbenv rehash
 
